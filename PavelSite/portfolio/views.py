@@ -11,9 +11,6 @@ from .forms import *
 from .utils import *
 
 
-menu = [{'title': "Добавить", 'url_name': 'add_page'}]
-
-
 def PageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 

@@ -3,13 +3,15 @@ from django.db.models import Count
 from .models import *
 
 
+menu = [{'title': "Добавить статью", 'url_name': 'add_page'},]
+
 
 class DataMixin:
     paginate_by = 20
 
     def get_user_context(self, **kwargs):
         context = kwargs
-        cats = Post.objects.annotate(Count('post'))
+        # cats = Post.objects.annotate(Count('post'))
 
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
@@ -17,7 +19,7 @@ class DataMixin:
 
         context['menu'] = user_menu
 
-        context['cats'] = cats
+        # context['cats'] = cats
         if 'cat_selected' not in context:
             context['cat_selected'] = 0
         return context
